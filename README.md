@@ -1,3 +1,3 @@
 # Tolisinih
 
-app todo for GetHired DevCode challenge
+A Todo App based on GetHired DevCode event, build with Vite, React and Tailwind
