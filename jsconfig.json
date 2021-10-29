@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "paths": {
+      // configure path for absolute import
+      "@/components/*": ["./components/*"],
+      "@/styles/*": ["./styles/*"],
+      "@/pages/*": ["./pages/*"],
+      "@/utils/*": ["./utils/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/store/*": ["./store/*"],
+      "@/assets/*": ["./assets/*"],
+      "@/reducer/*": ["./reducer/*"]
+      // add your own subfolder such as:
+    }
+  },
+  "exclude": ["node_modules", "build", "dist"]
+}

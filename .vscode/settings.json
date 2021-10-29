@@ -1,0 +1,13 @@
+{
+  "tailwindCSS.lint.recommendedVariantOrder": "error",
+  "tailwindCSS.lint.invalidTailwindDirective": "error",
+  "tailwindCSS.lint.invalidApply": "warning",
+  "tailwindCSS.lint.invalidVariant": "error",
+  "tailwindCSS.lint.invalidScreen": "error",
+  "tailwindCSS.lint.cssConflict": "error",
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.showPixelEquivalents": true,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.colorDecorators": true,
+  "tailwindCSS.rootFontSize": 16
+}
