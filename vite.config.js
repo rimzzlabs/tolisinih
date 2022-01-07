@@ -6,7 +6,8 @@ import viteCompress from 'vite-plugin-compression'
 export default defineConfig({
   plugins: [
     viteCompress({
-      algorithm: 'brotliCompress'
+      algorithm: 'brotliCompress',
+      deleteOriginFile: true
     }),
     react()
   ],
