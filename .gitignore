@@ -3,3 +3,12 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# Firebase
+*.firebase
+
+# Log
+*.log
+
+# Exclude .firebase folder
+/.firebase

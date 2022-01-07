@@ -1,15 +1,15 @@
 import { memo } from 'react'
-import Container from './Container'
 
-function Header() {
+const Header = () => {
   return (
-    <div className='bg-primary-500'>
-      <Container Data='header-background' Main>
-        <h2 data-cy='header-title' className='text-lg lg:text-2xl font-bold uppercase tracking-wide text-white'>
+    <div className='bg-sky-500 mb-2 md:mb-4'>
+      <header data-cy='header-background' className='layout flex items-center h-16 md:h-24'>
+        <h1 data-cy='header-title' className='text-neutral-100'>
           TO DO LIST APP
-        </h2>
-      </Container>
+        </h1>
+      </header>
     </div>
   )
 }
+
 export default memo(Header)

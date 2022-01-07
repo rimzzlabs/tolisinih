@@ -1,14 +1,18 @@
-import ReactDOM from 'react-dom'
-import Provider from '@/hooks/Context'
 import App from '@/App'
-import { BrowserRouter as Router } from 'react-router-dom'
-import '@/styles/globals.css'
+import '@/index.css'
 
-ReactDOM.render(
-  <Router>
-    <Provider>
+import store from './redux/store'
+
+import { render } from 'preact'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+
+const ROOT = document.getElementById('__app')
+render(
+  <BrowserRouter>
+    <Provider store={store}>
       <App />
     </Provider>
-  </Router>,
-  document.getElementById('__app'),
+  </BrowserRouter>,
+  ROOT
 )
