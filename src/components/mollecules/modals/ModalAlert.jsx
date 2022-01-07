@@ -1,13 +1,13 @@
 import Button from '@/components/atoms/Button'
 
 import { doDelete, doGet } from '@/libs/doFetch'
-import { setActivity } from '@/redux/actions/ActivityAction'
-import { setModalAlert } from '@/redux/actions/ModalAlertAction'
-import { setSelectedActivity } from '@/redux/actions/SelectedActivityAction'
+import { setActivity } from '@/redux/actions/activityAction'
+import { setModalAlert } from '@/redux/actions/modalAlertAction'
+import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
 import clsx from 'clsx'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
+import { memo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const ModalAlert = () => {
   const modalAlert = useSelector((state) => state.modalAlert)
@@ -84,4 +84,4 @@ const ModalAlert = () => {
   )
 }
 
-export default ModalAlert
+export default memo(ModalAlert)

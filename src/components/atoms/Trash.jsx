@@ -5,7 +5,7 @@ import { memo } from 'react'
  * @param {{onClick: () => void className?: string}} param0
  * @returns
  */
-const Trash = ({ onClick, className = '' }) => (
+const Trash = ({ onClick, className = 'p-1 md:p-2' }) => (
   <button data-cy='activity-item-delete-button' className={className} onClick={onClick}>
     <svg
       stroke='currentColor'

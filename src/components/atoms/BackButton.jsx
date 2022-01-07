@@ -1,7 +1,8 @@
 import clsx from 'clsx'
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
-export const MyLink = () => {
+const BackButton = () => {
   return (
     <Link
       data-cy='todo-back-button'
@@ -23,3 +24,5 @@ export const MyLink = () => {
     </Link>
   )
 }
+
+export default memo(BackButton)

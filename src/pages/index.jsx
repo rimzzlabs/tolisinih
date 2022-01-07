@@ -1,7 +1,7 @@
 import ActivityList from '@/components/mollecules/activities/ActivityList'
 
 import { doGet } from '@/libs/doFetch'
-import { setActivity } from '@/redux/actions/ActivityAction'
+import { setActivity } from '@/redux/actions/activityAction'
 
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'

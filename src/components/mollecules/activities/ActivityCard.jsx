@@ -1,7 +1,7 @@
 import Trash from '@/components/atoms/Trash'
 
 import { formatDate } from '@/libs/formatDate'
-import { setModalAlert } from '@/redux/actions/ModalAlertAction'
+import { setModalAlert } from '@/redux/actions/modalAlertAction'
 
 import clsx from 'clsx'
 import { useDispatch } from 'react-redux'

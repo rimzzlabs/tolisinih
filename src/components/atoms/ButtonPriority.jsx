@@ -1,5 +1,5 @@
 import { capsLetter } from '@/libs/capsLetter'
-import { setModalForm } from '@/redux/actions/ModalFormAction'
+import { setModalForm } from '@/redux/actions/modalFormAction'
 
 import { Suspense, lazy, memo, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'

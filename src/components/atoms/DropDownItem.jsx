@@ -1,4 +1,4 @@
-import { setModalForm } from '@/redux/actions/ModalFormAction'
+import { setModalForm } from '@/redux/actions/modalFormAction'
 
 import { Suspense, lazy, memo, useCallback } from 'react'
 import { useDispatch } from 'react-redux'

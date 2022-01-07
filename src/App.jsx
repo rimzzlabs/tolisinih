@@ -16,6 +16,9 @@ export default function App() {
   const modalAlert = useSelector((state) => state.modalAlert)
   const modalForm = useSelector((state) => state.modalForm)
   const dispatch = useDispatch()
+
+  const datacyType = modalForm.titleForm.startsWith('Edit') ? 'modal-edit' : 'modal-add'
+
   const closeModal = () => {
     if (modalAlert.isOpen) {
       dispatch(setModalAlert({ isOpen: false, isDeleteComplete: false }))
@@ -43,7 +46,7 @@ export default function App() {
 
         {modalForm.isOpen && (
           <Suspense fallback={null}>
-            <ModalLayout dataCy='todo-modal-delete' onClick={closeModal}>
+            <ModalLayout dataCy={datacyType} onClick={closeModal}>
               <Suspense fallback={null}>
                 <ModalForm />
               </Suspense>

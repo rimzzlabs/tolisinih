@@ -1,7 +1,9 @@
-import Header from '../Header'
-import HeaderMain from '../HeaderMain'
-import ButtonMain from '../mollecules/headerMain/ButtonMain'
-import TitleMain from '../mollecules/headerMain/TitleMain'
+import { Suspense, lazy, memo } from 'react'
+
+const Header = lazy(() => import('@/components/Header'))
+const HeaderMain = lazy(() => import('@/components/HeaderMain'))
+const ButtonMain = lazy(() => import('@/components/mollecules/headerMain/ButtonMain'))
+const TitleMain = lazy(() => import('@/components/mollecules/headerMain/TitleMain'))
 
 /**
  *
@@ -11,16 +13,24 @@ import TitleMain from '../mollecules/headerMain/TitleMain'
 const Layout = ({ children }) => {
   return (
     <>
-      <Header />
+      <Suspense fallback={null}>
+        <Header />
+      </Suspense>
       <div className='layout'>
-        <HeaderMain>
-          <TitleMain />
-          <ButtonMain />
-        </HeaderMain>
+        <Suspense fallback={null}>
+          <HeaderMain>
+            <Suspense fallback={null}>
+              <TitleMain />
+            </Suspense>
+            <Suspense fallback={null}>
+              <ButtonMain />
+            </Suspense>
+          </HeaderMain>
+        </Suspense>
         <main>{children}</main>
       </div>
     </>
   )
 }
 
-export default Layout
+export default memo(Layout)

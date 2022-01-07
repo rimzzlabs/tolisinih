@@ -2,6 +2,7 @@ import * as Icon from '@/components/atoms/Icon'
 
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 
+import { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const SortItem = ({ title, type }) => {
@@ -27,4 +28,4 @@ const SortItem = ({ title, type }) => {
   )
 }
 
-export default SortItem
+export default memo(SortItem)

@@ -1,4 +1,4 @@
-import { setModalForm } from '@/redux/actions/ModalFormAction'
+import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 import { SET_AZ, SET_INCOMPLETED, SET_NEWER, SET_OLDER, SET_ZA } from '@/redux/constant/action-types'
 

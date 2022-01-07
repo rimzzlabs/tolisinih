@@ -1,6 +1,6 @@
 import { doGet, doPost } from '@/libs/doFetch'
-import { setModalForm } from '@/redux/actions/ModalFormAction'
-import { setSelectedActivity } from '@/redux/actions/SelectedActivityAction'
+import { setModalForm } from '@/redux/actions/modalFormAction'
+import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
 import { memo, useCallback, useMemo } from 'react'
 import { useDispatch } from 'react-redux'

@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { memo } from 'react'
 
 const ModalLayout = ({ children, onClick, dataCy }) => {
   return (
@@ -14,4 +15,4 @@ const ModalLayout = ({ children, onClick, dataCy }) => {
   )
 }
 
-export default ModalLayout
+export default memo(ModalLayout)

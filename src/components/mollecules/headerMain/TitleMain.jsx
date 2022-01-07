@@ -1,14 +1,13 @@
+import BackButton from '@/components/atoms/BackButton'
 import * as Icon from '@/components/atoms/Icon'
-import { MyLink } from '@/components/atoms/MyLink'
 
 import { doPatch } from '@/libs/doFetch'
-import { setSelectedActivity } from '@/redux/actions/SelectedActivityAction'
-import { setTitle } from '@/redux/actions/SetTitleAction'
+import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
+import { setTitle } from '@/redux/actions/setTitleAction'
 
 import clsx from 'clsx'
-import { useCallback } from 'react'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
+import { memo, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
 const TitleMain = () => {
@@ -17,7 +16,11 @@ const TitleMain = () => {
   const selectedActivity = useSelector((state) => state.selectedActivity)
   const titleActivity = useSelector((state) => state.titleActivity)
 
-  const editTitle = () => dispatch(setTitle({ title: selectedActivity.title, isEditing: true }))
+  const editTitle = useCallback(
+    () => dispatch(setTitle({ title: selectedActivity.title, isEditing: true })),
+    [selectedActivity.title, selectedActivity.isEditing]
+  )
+
   const handleChange = useCallback((e) => dispatch(setTitle({ title: e.target.value })), [titleActivity.title])
 
   const handlePatch = async () => {
@@ -44,7 +47,7 @@ const TitleMain = () => {
 
   return (
     <div className='flex items-center space-x-2 md:space-x-3'>
-      {pathname !== '/' && <MyLink />}
+      {pathname !== '/' && <BackButton />}
       {!titleActivity.isEditing && pathname !== '/' && (
         <h2 data-cy='todo-title' onClick={editTitle}>
           {selectedActivity?.title}
@@ -76,4 +79,4 @@ const TitleMain = () => {
   )
 }
 
-export default TitleMain
+export default memo(TitleMain)

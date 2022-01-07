@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 const Indicator = ({ title }) => {
   switch (title) {
     case 'Very High':
@@ -25,4 +27,4 @@ const Indicator = ({ title }) => {
   }
 }
 
-export default Indicator
+export default memo(Indicator)

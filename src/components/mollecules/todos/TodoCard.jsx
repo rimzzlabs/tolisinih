@@ -1,9 +1,9 @@
 import Indicator from '@/components/atoms/Indicator'
 
 import { doGet, doPatch } from '@/libs/doFetch'
-import { setModalAlert } from '@/redux/actions/ModalAlertAction'
-import { setModalForm } from '@/redux/actions/ModalFormAction'
-import { setSelectedActivity } from '@/redux/actions/SelectedActivityAction'
+import { setModalAlert } from '@/redux/actions/modalAlertAction'
+import { setModalForm } from '@/redux/actions/modalFormAction'
+import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
 import clsx from 'clsx'
 import { memo, useCallback, useState } from 'react'

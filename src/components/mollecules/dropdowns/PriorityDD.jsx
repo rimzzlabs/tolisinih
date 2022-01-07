@@ -1,6 +1,6 @@
 import { indicatorList } from '@/libs/constant'
 
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, memo } from 'react'
 import { useSelector } from 'react-redux'
 
 const DropDownItem = lazy(() => import('@/components/atoms/DropDownItem'))
@@ -26,4 +26,4 @@ const PriorityDD = () => {
   return null
 }
 
-export default PriorityDD
+export default memo(PriorityDD)

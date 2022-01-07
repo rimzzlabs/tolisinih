@@ -1,5 +1,5 @@
 import { doGet } from '@/libs/doFetch'
-import { setSelectedActivity } from '@/redux/actions/SelectedActivityAction'
+import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 import { SET_NEWER } from '@/redux/constant/action-types'
 

@@ -1,6 +1,6 @@
 import { createActivity } from '@/libs/createActivity'
 import { doGet, doPost } from '@/libs/doFetch'
-import { setActivity } from '@/redux/actions/ActivityAction'
+import { setActivity } from '@/redux/actions/activityAction'
 
 import { ActivityCard } from './ActivityCard'
 

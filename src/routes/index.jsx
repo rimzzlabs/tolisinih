@@ -1,4 +1,4 @@
-import { lazy } from 'react'
+import { lazy, memo } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 const Home = lazy(() => import('@/pages'))
@@ -13,4 +13,4 @@ const MyRoutes = () => {
   )
 }
 
-export default MyRoutes
+export default memo(MyRoutes)

@@ -1,18 +1,17 @@
-import Button from '@/components/atoms/Button'
-import ButtonPriority from '@/components/atoms/ButtonPriority'
-import FormHeader from '@/components/atoms/FormHeader'
-import Input from '@/components/atoms/Input'
-
 import { doGet, doPatch, doPost } from '@/libs/doFetch'
-import { setModalForm } from '@/redux/actions/ModalFormAction'
-import { setSelectedActivity } from '@/redux/actions/SelectedActivityAction'
-
-import PriorityDD from '../dropdowns/PriorityDD'
+import { setModalForm } from '@/redux/actions/modalFormAction'
+import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
 import clsx from 'clsx'
-import { memo, useCallback } from 'react'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { Suspense, lazy, memo, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+const Button = lazy(() => import('@/components/atoms/Button'))
+const ButtonPriority = lazy(() => import('@/components/atoms/ButtonPriority'))
+const FormHeader = lazy(() => import('@/components/atoms/FormHeader'))
+const Input = lazy(() => import('@/components/atoms/Input'))
+
+const PriorityDD = lazy(() => import('../dropdowns/PriorityDD'))
 
 const ModalForm = () => {
   const modalForm = useSelector((state) => state.modalForm)
@@ -55,39 +54,46 @@ const ModalForm = () => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      data-cy='modal-add'
       className='flex flex-col justify-between h-72 md:h-96 w-10/12 md:w-auto aspect-video rounded-lg divide-y translate-y-[-40%] divide-neutral-300 bg-white'
     >
-      <FormHeader />
+      <Suspense fallback={null}>
+        <FormHeader />
+      </Suspense>
       <div className='flex flex-col justify-evenly w-full h-[80%] py-2 lg:py-4 px-4 lg:px-8 space-y-2 lg:space-y-4'>
         <section>
           <label data-cy='modal-add-name-title' htmlFor='item-name' className='uppercase text-neutral-800'>
             NAMA LIST ITEM
           </label>
-          <Input />
+          <Suspense fallback={null}>
+            <Input />
+          </Suspense>
         </section>
 
         <section>
           <div data-cy='modal-add-priority-title' className='tracking-wider uppercase text-neutral-900'>
             PRIORITY
           </div>
-          <ButtonPriority />
-          <PriorityDD />
+          <Suspense fallback={null}>
+            <ButtonPriority />
+            <PriorityDD />
+          </Suspense>
         </section>
       </div>
       <section className='flex items-center justify-end p-2 md:p-4 w-full'>
-        <Button
-          onclick={handleSubmit}
-          data-cy='modal-add-save-button'
-          disabled={modalForm.title.length > 0 ? false : true}
-          className={clsx(
-            'px-4 md:px-8',
-            'bg-sky-500 text-white',
-            modalForm.title.length > 0 ? 'opacity-100' : 'opacity-50'
-          )}
-        >
-          Simpan
-        </Button>
+        <Suspense fallback={null}>
+          <Button
+            onclick={handleSubmit}
+            data-cy='modal-add-save-button'
+            disabled={modalForm.title.length > 0 ? false : true}
+            className={clsx(
+              'px-4 md:px-8',
+              'bg-sky-500 text-white',
+              modalForm.title.length > 0 ? 'opacity-100' : 'opacity-50'
+            )}
+          >
+            Simpan
+          </Button>
+        </Suspense>
       </section>
     </div>
   )

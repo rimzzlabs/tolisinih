@@ -1,17 +1,17 @@
-import Button from '@/components/atoms/Button'
 import * as Icon from '@/components/atoms/Icon'
 
 import { createActivity } from '@/libs/createActivity'
 import { doGet, doPost } from '@/libs/doFetch'
-import { setActivity } from '@/redux/actions/ActivityAction'
-import { setModalForm } from '@/redux/actions/ModalFormAction'
+import { setActivity } from '@/redux/actions/activityAction'
+import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 
-import SortList from '../sorts/SortList'
-
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
+import { Suspense, lazy, memo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+
+const Button = lazy(() => import('@/components/atoms/Button'))
+const SortList = lazy(() => import('@/components/mollecules/sorts/SortList'))
 
 const ButtonMain = () => {
   const { pathname } = useLocation()
@@ -44,27 +44,35 @@ const ButtonMain = () => {
 
   if (pathname === '/') {
     return (
-      <Button data-cy='activity-add-button' onclick={addNewActivity}>
-        <Icon.PlusIcon />
-        <span className='sr-only sm:not-sr-only'>Tambah</span>
-      </Button>
+      <Suspense fallback={null}>
+        <Button data-cy='activity-add-button' onclick={addNewActivity}>
+          <Icon.PlusIcon />
+          <span className='sr-only sm:not-sr-only'>Tambah</span>
+        </Button>
+      </Suspense>
     )
   }
 
   return (
     <div className='flex items-center space-x-2 md:scroll-px-3'>
-      <Button data-cy='todo-sort-button' className='relative border aspect-square' onclick={showSortOpt}>
-        <Icon.SortIcon />
-        <span className='sr-only'>Sort Item</span>
-      </Button>
+      <Suspense fallback={null}>
+        <Button data-cy='todo-sort-button' className='relative border aspect-square' onclick={showSortOpt}>
+          <Icon.SortIcon />
+          <span className='sr-only'>Sort Item</span>
+        </Button>
+      </Suspense>
 
-      <div className='relative'>{sortOptions.isOpen && <SortList />}</div>
-      <Button data-cy='todo-add-button' onclick={showForm}>
-        <Icon.PlusIcon />
-        <span className='sr-only sm:not-sr-only'>Tambah</span>
-      </Button>
+      <div className='relative'>
+        <Suspense fallback={null}>{sortOptions.isOpen && <SortList />}</Suspense>
+      </div>
+      <Suspense fallback={null}>
+        <Button data-cy='todo-add-button' onclick={showForm}>
+          <Icon.PlusIcon />
+          <span className='sr-only sm:not-sr-only'>Tambah</span>
+        </Button>
+      </Suspense>
     </div>
   )
 }
 
-export default ButtonMain
+export default memo(ButtonMain)

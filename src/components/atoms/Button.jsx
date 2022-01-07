@@ -16,6 +16,7 @@ const Button = ({
 }) => {
   return (
     <button
+      {...props}
       onClick={onclick}
       className={clsx(
         'inline-flex items-center justify-center space-x-1 md:space-x-1.5',
@@ -23,7 +24,6 @@ const Button = ({
         'active:scale-95',
         className
       )}
-      {...props}
     >
       {children}
     </button>
