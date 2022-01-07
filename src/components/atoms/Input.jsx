@@ -42,7 +42,7 @@ const Input = () => {
         })
       )
     }
-  }, [modalForm.title])
+  }, [modalForm.title, modalForm.priority])
 
   const onSubmitWithEnter = async (e) => {
     if (e.key === 'Enter') await postTodo()

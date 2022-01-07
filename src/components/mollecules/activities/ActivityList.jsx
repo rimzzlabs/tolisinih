@@ -2,12 +2,11 @@ import { createActivity } from '@/libs/createActivity'
 import { doGet, doPost } from '@/libs/doFetch'
 import { setActivity } from '@/redux/actions/activityAction'
 
-import { ActivityCard } from './ActivityCard'
-
 import clsx from 'clsx'
-import { Suspense, lazy } from 'react'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { Suspense, lazy, memo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+const ActivityCard = lazy(() => import('./ActivityCard'))
 
 const Figures = lazy(() => import('@/components/Figures'))
 
@@ -30,9 +29,11 @@ const ActivityList = () => {
   if (activity.length > 0) {
     return (
       <div className={clsx('grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4', 'gap-4 md:gap-8 flex-[1_1_auto]')}>
-        {activity.map((item) => (
-          <ActivityCard {...item} key={item.id} />
-        ))}
+        <Suspense fallback={null}>
+          {activity.map((item) => (
+            <ActivityCard {...item} key={item.id} />
+          ))}
+        </Suspense>
       </div>
     )
   }
@@ -48,4 +49,4 @@ const ActivityList = () => {
   )
 }
 
-export default ActivityList
+export default memo(ActivityList)

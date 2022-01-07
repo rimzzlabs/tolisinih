@@ -6,8 +6,8 @@ import { memo } from 'react'
  * @returns
  */
 const Figures = ({ src, onclick = () => null, dataCy = '' }) => (
-  <figure onClick={onclick} data-cy={dataCy} className='w-1/2 mx-auto cursor-pointer'>
-    <img src={src} className='w-full object-contain aspect-square' alt='activity' />
+  <figure onClick={onclick} className='w-1/2 mx-auto cursor-pointer'>
+    <img data-cy={dataCy} src={src} className='w-full object-contain aspect-square' alt='activity' />
   </figure>
 )
 

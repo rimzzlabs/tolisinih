@@ -4,6 +4,7 @@ import { formatDate } from '@/libs/formatDate'
 import { setModalAlert } from '@/redux/actions/modalAlertAction'
 
 import clsx from 'clsx'
+import { memo } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,7 +15,7 @@ import { useNavigate } from 'react-router-dom'
  * - date: a string that contains the date of activity
  * @param {{id: number title: string, created_at: string}} param0
  */
-export const ActivityCard = ({ id, title, created_at }) => {
+const ActivityCard = ({ id, title, created_at }) => {
   const date = formatDate(created_at)
   const dispatch = useDispatch()
   const router = useNavigate()
@@ -47,3 +48,5 @@ export const ActivityCard = ({ id, title, created_at }) => {
     </div>
   )
 }
+
+export default memo(ActivityCard)

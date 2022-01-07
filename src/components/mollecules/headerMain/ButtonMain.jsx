@@ -1,3 +1,4 @@
+import Button from '@/components/atoms/Button'
 import * as Icon from '@/components/atoms/Icon'
 
 import { createActivity } from '@/libs/createActivity'
@@ -6,17 +7,17 @@ import { setActivity } from '@/redux/actions/activityAction'
 import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 
-import { Suspense, lazy, memo } from 'react'
+import { Suspense, lazy, memo, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
-const Button = lazy(() => import('@/components/atoms/Button'))
 const SortList = lazy(() => import('@/components/mollecules/sorts/SortList'))
 
 const ButtonMain = () => {
   const { pathname } = useLocation()
   const dispatch = useDispatch()
   const sortOptions = useSelector((state) => state.sortOptions)
+  const modalForm = useSelector((state) => state.modalForm)
 
   const syncActivity = async () => {
     const response = await doGet('/activity-groups?email=rizki.maulana@skyshi.com')
@@ -29,7 +30,7 @@ const ButtonMain = () => {
     await syncActivity()
   }
 
-  const showForm = () =>
+  const showForm = useCallback(() => {
     dispatch(
       setModalForm({
         isOpen: true,
@@ -37,6 +38,7 @@ const ButtonMain = () => {
         priority: 'Very High'
       })
     )
+  }, [modalForm.isOpen])
 
   const showSortOpt = () => {
     dispatch(setSortOption({ isOpen: !sortOptions.isOpen }))
@@ -44,33 +46,27 @@ const ButtonMain = () => {
 
   if (pathname === '/') {
     return (
-      <Suspense fallback={null}>
-        <Button data-cy='activity-add-button' onclick={addNewActivity}>
-          <Icon.PlusIcon />
-          <span className='sr-only sm:not-sr-only'>Tambah</span>
-        </Button>
-      </Suspense>
+      <Button data-cy='activity-add-button' onclick={addNewActivity}>
+        <Icon.PlusIcon />
+        <span className='sr-only sm:not-sr-only'>Tambah</span>
+      </Button>
     )
   }
 
   return (
     <div className='flex items-center space-x-2 md:scroll-px-3'>
-      <Suspense fallback={null}>
-        <Button data-cy='todo-sort-button' className='relative border aspect-square' onclick={showSortOpt}>
-          <Icon.SortIcon />
-          <span className='sr-only'>Sort Item</span>
-        </Button>
-      </Suspense>
+      <Button data-cy='todo-sort-button' className='relative border aspect-square' onclick={showSortOpt}>
+        <Icon.SortIcon />
+        <span className='sr-only'>Sort Item</span>
+      </Button>
 
       <div className='relative'>
         <Suspense fallback={null}>{sortOptions.isOpen && <SortList />}</Suspense>
       </div>
-      <Suspense fallback={null}>
-        <Button data-cy='todo-add-button' onclick={showForm}>
-          <Icon.PlusIcon />
-          <span className='sr-only sm:not-sr-only'>Tambah</span>
-        </Button>
-      </Suspense>
+      <Button data-cy='todo-add-button' onclick={showForm}>
+        <Icon.PlusIcon />
+        <span className='sr-only sm:not-sr-only'>Tambah</span>
+      </Button>
     </div>
   )
 }
