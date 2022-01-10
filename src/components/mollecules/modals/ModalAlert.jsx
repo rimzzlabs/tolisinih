@@ -40,6 +40,7 @@ const ModalAlert = () => {
 
   return (
     <div
+      data-cy='modal-delete'
       onClick={(e) => e.stopPropagation()}
       className={clsx('flex flex-col items-center h-80 md:h-[24rem] aspect-[1.25/1] rounded', ' bg-white')}
     >
@@ -67,14 +68,14 @@ const ModalAlert = () => {
       <div className={clsx('flex items-center justify-center w-full h-full', 'space-x-2 md:space-x-3')}>
         <Button
           data-cy='modal-delete-cancel-button'
-          onclick={closeModal}
+          onClick={closeModal}
           className='bg-neutral-200 text-neutral-900 font-semibold px-8 md:px-12'
         >
           Batal
         </Button>
         <Button
           data-cy='modal-delete-confirm-button'
-          onclick={onDelete}
+          onClick={onDelete}
           className='bg-red-500 text-white font-semibold px-8 md:px-12'
         >
           Hapus
