@@ -7,7 +7,6 @@ import { Suspense, lazy, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const ActivityCard = lazy(() => import('./ActivityCard'))
-
 const Figures = lazy(() => import('@/components/Figures'))
 
 const ActivityList = () => {
@@ -42,7 +41,7 @@ const ActivityList = () => {
     <Suspense fallback={null}>
       <Figures
         dataCy='activity-empty-state'
-        onclick={addNewActivity}
+        onClick={addNewActivity}
         src='https://ik.imagekit.io/mlnzyx/devcode-todo/new-activity_wJFQLMWOpxN.svg?updatedAt=1635360519343'
       />
     </Suspense>
