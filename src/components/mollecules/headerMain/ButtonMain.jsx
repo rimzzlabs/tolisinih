@@ -46,7 +46,7 @@ const ButtonMain = () => {
 
   if (pathname === '/') {
     return (
-      <Button data-cy='activity-add-button' onclick={addNewActivity}>
+      <Button data-cy='activity-add-button' onClick={addNewActivity}>
         <Icon.PlusIcon />
         <span className='sr-only sm:not-sr-only'>Tambah</span>
       </Button>
@@ -55,7 +55,7 @@ const ButtonMain = () => {
 
   return (
     <div className='flex items-center space-x-2 md:scroll-px-3'>
-      <Button data-cy='todo-sort-button' className='relative border aspect-square' onclick={showSortOpt}>
+      <Button data-cy='todo-sort-button' className='relative border aspect-square' onClick={showSortOpt}>
         <Icon.SortIcon />
         <span className='sr-only'>Sort Item</span>
       </Button>
@@ -63,7 +63,7 @@ const ButtonMain = () => {
       <div className='relative'>
         <Suspense fallback={null}>{sortOptions.isOpen && <SortList />}</Suspense>
       </div>
-      <Button data-cy='todo-add-button' onclick={showForm}>
+      <Button data-cy='todo-add-button' onClick={showForm}>
         <Icon.PlusIcon />
         <span className='sr-only sm:not-sr-only'>Tambah</span>
       </Button>
