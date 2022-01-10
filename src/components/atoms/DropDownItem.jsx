@@ -1,9 +1,9 @@
 import { setModalForm } from '@/redux/actions/modalFormAction'
 
-import { Suspense, lazy, memo, useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import Indicator from './Indicator'
 
-const Indicator = lazy(() => import('@/components/atoms/Indicator'))
+import { memo, useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
 const DropDownItem = ({ title, id }) => {
   const dispatch = useDispatch()
@@ -23,9 +23,7 @@ const DropDownItem = ({ title, id }) => {
       data-cy='modal-add-priority-item'
       className='flex items-center h-full w-full px-4 lg:px-6 cursor-pointer hover:bg-neutral-100'
     >
-      <Suspense fallback={null}>
-        <Indicator title={title} />
-      </Suspense>
+      <Indicator title={title} />
       <span>{title}</span>
     </button>
   )

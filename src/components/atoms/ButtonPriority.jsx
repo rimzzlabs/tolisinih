@@ -1,10 +1,10 @@
 import { capsLetter } from '@/libs/capsLetter'
 import { setModalForm } from '@/redux/actions/modalFormAction'
 
-import { Suspense, lazy, memo, useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import Indicator from './Indicator'
 
-const Indicator = lazy(() => import('./Indicator'))
+import { memo, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const ButtonPriority = () => {
   const modalForm = useSelector((state) => state.modalForm)
@@ -25,9 +25,7 @@ const ButtonPriority = () => {
       data-cy='modal-add-priority-dropdown'
       className='flex items-center justify-between mt-2 lg:mt-4 px-4 lg:px-6 w-40 lg:w-48 h-12 lg:h-14 rounded-md transition outline-none border border-neutral-400 hover:border-primary-500 focus:border-primary-500'
     >
-      <Suspense fallback={null}>
-        <Indicator title={modalForm.priority} />
-      </Suspense>
+      <Indicator title={modalForm.priority} />
 
       <span className='text-xs md:text-sm xl:text-base font-semibold text-fontColor-900'>{priority}</span>
 
