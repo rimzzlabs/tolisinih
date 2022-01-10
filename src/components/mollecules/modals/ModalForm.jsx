@@ -53,6 +53,7 @@ const ModalForm = () => {
 
   return (
     <div
+      data-cy='modal-add'
       onClick={(e) => e.stopPropagation()}
       className='flex flex-col justify-between h-72 md:h-96 w-10/12 md:w-auto aspect-video rounded-lg divide-y translate-y-[-40%] divide-neutral-300 bg-white'
     >
@@ -77,7 +78,7 @@ const ModalForm = () => {
       </div>
       <section className='flex items-center justify-end p-2 md:p-4 w-full'>
         <Button
-          onclick={handleSubmit}
+          onClick={handleSubmit}
           data-cy='modal-add-save-button'
           disabled={modalForm.title.length > 0 ? false : true}
           className={clsx(
