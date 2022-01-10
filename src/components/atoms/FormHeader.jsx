@@ -26,7 +26,7 @@ const FormHeader = () => {
       <div data-cy='modal-add-title' className='text-xl font-semibold text-fontColor-900'>
         {modalForm.titleForm}
       </div>
-      <Button data-cy='modal-add-close-button' onclick={closeModal} className='text-4xl text-neutral-400'>
+      <Button data-cy='modal-add-close-button' onClick={closeModal} className='text-4xl text-neutral-400'>
         <svg
           stroke='currentColor'
           fill='currentColor'
