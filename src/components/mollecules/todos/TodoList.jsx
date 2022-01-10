@@ -2,12 +2,11 @@ import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 import { SET_AZ, SET_INCOMPLETED, SET_NEWER, SET_OLDER, SET_ZA } from '@/redux/constant/action-types'
 
-import TodoCard from './TodoCard'
-
 import clsx from 'clsx'
 import { Suspense, lazy, useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+const TodoCard = lazy(() => import('./TodoCard'))
 const Figures = lazy(() => import('@/components/Figures'))
 
 const TodoList = () => {
@@ -52,26 +51,28 @@ const TodoList = () => {
   if (todos.length > 0) {
     return (
       <div className={clsx('flex flex-col w-full', 'space-y-2 md:space-y-3')}>
-        {todos.map(
-          /**
-           *
-           * @param {{
-           * id: number
-           * title: string
-           * priority: string
-           * is_active: number | boolean}} item the parameter is the object of the todo item received from the API
-           * @returns
-           */
-          (item) => (
-            <TodoCard
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              priority={item.priority}
-              is_active={item.is_active}
-            />
-          )
-        )}
+        <Suspense fallback={null}>
+          {todos.map(
+            /**
+             *
+             * @param {{
+             * id: number
+             * title: string
+             * priority: string
+             * is_active: number | boolean}} item the parameter is the object of the todo item received from the API
+             * @returns
+             */
+            (item) => (
+              <TodoCard
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                priority={item.priority}
+                is_active={item.is_active}
+              />
+            )
+          )}
+        </Suspense>
       </div>
     )
   }
