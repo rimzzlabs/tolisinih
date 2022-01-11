@@ -1,7 +1,7 @@
 import { SET_SELECTED_ACTIVITY } from '../constant/action-types'
 
 const initialState = {
-  title: null,
+  title: 'Activity',
   todo_items: []
 }
 

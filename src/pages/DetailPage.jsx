@@ -3,7 +3,7 @@ import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 import { SET_NEWER } from '@/redux/constant/action-types'
 
-import { Suspense, lazy, useEffect } from 'react'
+import { Suspense, lazy, memo, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
@@ -35,4 +35,4 @@ const DetailPage = () => {
   )
 }
 
-export default DetailPage
+export default memo(DetailPage)

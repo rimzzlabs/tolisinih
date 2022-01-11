@@ -3,7 +3,7 @@ import ActivityList from '@/components/mollecules/activities/ActivityList'
 import { doGet } from '@/libs/doFetch'
 import { setActivity } from '@/redux/actions/activityAction'
 
-import { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 const IndexPage = () => {
@@ -25,4 +25,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default memo(IndexPage)
