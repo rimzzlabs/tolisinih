@@ -5,8 +5,7 @@ import { doPatch } from '@/libs/doFetch'
 import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 import { setTitle } from '@/redux/actions/setTitleAction'
 
-import clsx from 'clsx'
-import { memo, useCallback } from 'react'
+import { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
@@ -16,12 +15,8 @@ const TitleMain = () => {
   const selectedActivity = useSelector((state) => state.selectedActivity)
   const titleActivity = useSelector((state) => state.titleActivity)
 
-  const editTitle = useCallback(
-    () => dispatch(setTitle({ title: selectedActivity.title, isEditing: true })),
-    [selectedActivity.title, selectedActivity.isEditing]
-  )
-
-  const handleChange = useCallback((e) => dispatch(setTitle({ title: e.target.value })), [titleActivity.title])
+  const editTitle = () => dispatch(setTitle({ title: selectedActivity.title, isEditing: true }))
+  const handleChange = (e) => dispatch(setTitle({ title: e.target.value }))
 
   const handlePatch = async () => {
     await doPatch('/activity-groups/' + selectedActivity.id, { title: titleActivity.title })
@@ -39,10 +34,8 @@ const TitleMain = () => {
     }
   }
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleSync()
-    }
+  const handleKeyPress = async (e) => {
+    if (e.key === 'Enter') await handleSync()
   }
 
   return (
@@ -50,7 +43,7 @@ const TitleMain = () => {
       {pathname !== '/' && <BackButton />}
       {!titleActivity.isEditing && pathname !== '/' && (
         <h2 data-cy='todo-title' onClick={editTitle}>
-          {selectedActivity?.title}
+          {selectedActivity.title}
         </h2>
       )}
       {pathname === '/' && <h2 data-cy='activity-title'>Activity</h2>}
@@ -62,11 +55,7 @@ const TitleMain = () => {
           onBlur={handleSync}
           onChange={handleChange}
           value={titleActivity.title}
-          className={clsx(
-            'py-1 md:py-2 text-xl font-bold md:text-3xl',
-            'bg-transparent border-b outline-none',
-            'text-neutral-700 border-neutral-700'
-          )}
+          className='py-1 md:py-2 text-xl font-bold md:text-3xl bg-transparent border-b outline-none text-neutral-700 border-neutral-700'
           autoFocus
         />
       )}

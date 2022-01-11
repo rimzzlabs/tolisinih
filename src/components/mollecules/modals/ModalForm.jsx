@@ -7,8 +7,7 @@ import { doGet, doPatch, doPost } from '@/libs/doFetch'
 import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
-import clsx from 'clsx'
-import { Suspense, lazy, memo, useCallback } from 'react'
+import { Suspense, lazy, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const PriorityDD = lazy(() => import('../dropdowns/PriorityDD'))
@@ -23,33 +22,26 @@ const ModalForm = () => {
     dispatch(setSelectedActivity(response))
   }
 
-  const handleSubmit = useCallback(async () => {
+  const handleSubmit = async () => {
+    const payload = {
+      title: modalForm.title,
+      priority: modalForm.priority === 'Medium' ? 'normal' : modalForm.priority.replace(' ', '-').toLowerCase(),
+      activity_group_id: selectedActivity.id
+    }
+
     if (!modalForm.title) {
       return
     }
     if (modalForm.titleForm === 'Tambah List Item') {
-      const payload = {
-        title: modalForm.title,
-        priority: modalForm.priority === 'Medium' ? 'normal' : modalForm.priority.replace(' ', '-').toLowerCase(),
-        activity_group_id: selectedActivity.id
-      }
-
-      await doPost('/todo-items', payload).finally(() =>
-        dispatch(setModalForm({ isOpen: false, isDropDownItem: false, title: '', priority: 'Very High' }))
-      )
+      await doPost('/todo-items', payload)
       await syncActivity()
+      dispatch(setModalForm({ isOpen: false, isDropDownItem: false, title: '', priority: 'Very High' }))
     } else {
-      const payload = {
-        title: modalForm.title,
-        priority: modalForm.priority === 'Medium' ? 'normal' : modalForm.priority.replace(' ', '-').toLowerCase(),
-        activity_group_id: selectedActivity.id
-      }
-      await doPatch('/todo-items/' + modalForm.id, payload).finally(() =>
-        dispatch(setModalForm({ isOpen: false, isDropDownItem: false, title: '', priority: 'Very High' }))
-      )
+      await doPatch('/todo-items/' + modalForm.id, payload)
       await syncActivity()
+      dispatch(setModalForm({ isOpen: false, isDropDownItem: false, title: '', priority: 'Very High' }))
     }
-  }, [modalForm, selectedActivity, dispatch])
+  }
 
   return (
     <div
@@ -81,11 +73,7 @@ const ModalForm = () => {
           onClick={handleSubmit}
           data-cy='modal-add-save-button'
           disabled={modalForm.title.length > 0 ? false : true}
-          className={clsx(
-            'px-4 md:px-8',
-            'bg-sky-500 text-white',
-            modalForm.title.length > 0 ? 'opacity-100' : 'opacity-50'
-          )}
+          className={`px-4 md:px-8 bg-sky-500 text-white ${modalForm.title.length > 0 ? 'opacity-100' : 'opacity-50'}`}
         >
           Simpan
         </Button>

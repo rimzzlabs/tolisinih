@@ -5,7 +5,6 @@ import { setActivity } from '@/redux/actions/activityAction'
 import { setModalAlert } from '@/redux/actions/modalAlertAction'
 import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
-import clsx from 'clsx'
 import { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -28,7 +27,6 @@ const ModalAlert = () => {
   }
 
   const onDelete = async () => {
-    dispatch(setModalAlert({ isDeleteComplete: true }))
     if (modalAlert.type === 'Activity') {
       await doDelete(`/activity-groups/${modalAlert.id}`)
       await syncActivity()
@@ -36,13 +34,14 @@ const ModalAlert = () => {
       await doDelete(`/todo-items/${modalAlert.id}`)
       await syncSelectedActivity()
     }
+    dispatch(setModalAlert({ isDeleteComplete: true }))
   }
 
   return (
     <div
       data-cy='modal-delete'
       onClick={(e) => e.stopPropagation()}
-      className={clsx('flex flex-col items-center h-80 md:h-[24rem] aspect-[1.25/1] rounded', ' bg-white')}
+      className='flex flex-col items-center h-80 md:h-[24rem] aspect-[1.25/1] rounded bg-white'
     >
       <div className='flex items-center justify-center text-red-500 h-full'>
         <svg
@@ -65,7 +64,7 @@ const ModalAlert = () => {
           Apakah anda yakin ingin menghapus {modalAlert.type} <strong>&quot;{modalAlert.title}&quot;</strong>?
         </h3>
       </div>
-      <div className={clsx('flex items-center justify-center w-full h-full', 'space-x-2 md:space-x-3')}>
+      <div className='flex items-center justify-center w-full h-full space-x-2 md:space-x-3'>
         <Button
           data-cy='modal-delete-cancel-button'
           onClick={closeModal}

@@ -2,7 +2,7 @@ import { doGet, doPost } from '@/libs/doFetch'
 import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
-import { memo, useCallback, useMemo } from 'react'
+import { memo, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 
@@ -16,7 +16,7 @@ const Input = () => {
     dispatch(setSelectedActivity(response))
   }
 
-  const postTodo = useCallback(async () => {
+  const postTodo = async () => {
     if (!modalForm.title) {
       return
     }
@@ -30,7 +30,7 @@ const Input = () => {
       dispatch(setModalForm({ isOpen: false, isDropDownItem: false, title: '', priority: 'Very High' }))
     )
     await syncActivity()
-  }, [modalForm, selectedActivity, dispatch])
+  }
 
   // handlechange with useMemo
   const handleChange = useMemo(() => {

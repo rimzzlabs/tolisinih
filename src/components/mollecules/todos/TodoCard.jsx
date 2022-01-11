@@ -5,8 +5,7 @@ import { setModalAlert } from '@/redux/actions/modalAlertAction'
 import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
-import clsx from 'clsx'
-import { memo, useCallback, useState } from 'react'
+import { memo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const TodoCard = ({ id, title, priority, is_active }) => {
@@ -14,22 +13,22 @@ const TodoCard = ({ id, title, priority, is_active }) => {
   const selectedActivity = useSelector((state) => state.selectedActivity)
   const dispatch = useDispatch()
 
-  const syncActivity = useCallback(async () => {
+  const syncActivity = async () => {
     const response = await doGet(`/activity-groups/${selectedActivity.id}`)
     dispatch(setSelectedActivity(response))
-  }, [dispatch, selectedActivity.id])
+  }
 
-  const handleCheckbox = useCallback(async () => {
+  const handleCheckbox = async () => {
     setChecked(!checked)
     await doPatch('/todo-items/' + id, { is_active: checked ? 1 : 0 })
     await syncActivity()
-  }, [checked])
+  }
 
-  const showModalAlert = useCallback(() => {
+  const showModalAlert = () => {
     dispatch(setModalAlert({ type: 'Item', id: id, isOpen: true, title: title }))
-  }, [id])
+  }
 
-  const showModalFormEdit = useCallback(() => {
+  const showModalFormEdit = () => {
     dispatch(
       setModalForm({
         isOpen: true,
@@ -39,15 +38,12 @@ const TodoCard = ({ id, title, priority, is_active }) => {
         id: id
       })
     )
-  }, [id, title, priority, dispatch])
+  }
 
   return (
     <div
       data-cy='todo-item'
-      className={clsx(
-        'flex items-center justify-between',
-        'w-full h-14 md:h-16 px-4 lg:px-8 rounded-lg shadow bg-white'
-      )}
+      className='flex items-center justify-between w-full h-14 md:h-16 px-4 lg:px-8 rounded-lg shadow bg-white'
     >
       <div className='flex items-center space-x-2 lg:space-x-4 w-full h-full'>
         <input data-cy='todo-item-checkbox' type='checkbox' onChange={handleCheckbox} checked={checked} />

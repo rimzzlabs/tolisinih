@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { memo } from 'react'
 
 /**
@@ -8,22 +7,11 @@ import { memo } from 'react'
  * @returns
  */
 
-const Button = ({
-  children,
-  onClick = () => null,
-  className = 'bg-sky-500 hover:bg-sky-600 text-white ',
-  ...props
-}) => {
+const Button = ({ children, className = 'bg-sky-500 hover:bg-sky-600 text-white ', ...props }) => {
   return (
     <button
       {...props}
-      onClick={onClick}
-      className={clsx(
-        'inline-flex items-center justify-center space-x-1 md:space-x-1.5',
-        'py-2 px-2 sm:px-4 md:py-3 md:px-5 rounded-full',
-        'active:scale-95',
-        className
-      )}
+      className={`inline-flex items-center justify-center space-x-1 md:space-x-1.5 py-2 px-2 sm:px-4 md:py-3 md:px-5 rounded-full active:scale-95 ${className}`}
     >
       {children}
     </button>

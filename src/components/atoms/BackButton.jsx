@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -7,7 +6,7 @@ const BackButton = () => {
     <Link
       data-cy='todo-back-button'
       to='/'
-      className={clsx('inline-flex items-center justify-center', 'p-2 md:p-3 border rounded-full', 'active:scale-95')}
+      className='inline-flex items-center justify-center p-2 md:p-3 border rounded-full active:scale-95'
     >
       <svg
         stroke='currentColor'

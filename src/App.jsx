@@ -27,26 +27,20 @@ export default function App() {
   return (
     <>
       <Layout>
-        <Suspense fallback={null}>
-          <MyRoutes />
-        </Suspense>
+        <MyRoutes />
       </Layout>
 
       <Suspense fallback={null}>
         {modalAlert.isOpen && (
           <ModalLayout onClick={closeModal}>
-            <Suspense fallback={null}>
-              {!modalAlert.isDeleteComplete ? <ModalAlert /> : <ModalInfo type={modalAlert.type} />}
-            </Suspense>
+            {!modalAlert.isDeleteComplete ? <ModalAlert /> : <ModalInfo type={modalAlert.type} />}
           </ModalLayout>
         )}
 
         {modalForm.isOpen && (
-          <Suspense fallback={null}>
-            <ModalLayout onClick={closeModal}>
-              <ModalForm />
-            </ModalLayout>
-          </Suspense>
+          <ModalLayout onClick={closeModal}>
+            <ModalForm />
+          </ModalLayout>
         )}
       </Suspense>
     </>

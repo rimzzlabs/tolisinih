@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { memo } from 'react'
 
 /**
@@ -11,11 +10,7 @@ const ModalInfo = ({ type }) => {
     <div
       data-cy='modal-information'
       onClick={(e) => e.stopPropagation()}
-      className={clsx(
-        'inline-flex items-center',
-        'py-3.5 md:py-4 px-6 md:px-8 rounded-lg space-x-1 md:space-x-2',
-        'bg-white'
-      )}
+      className='inline-flex items-center py-3.5 md:py-4 px-6 md:px-8 rounded-lg space-x-1 md:space-x-2 bg-white'
     >
       <svg
         stroke='currentColor'
