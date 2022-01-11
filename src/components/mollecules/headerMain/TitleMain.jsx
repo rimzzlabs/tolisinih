@@ -59,11 +59,7 @@ const TitleMain = () => {
           autoFocus
         />
       )}
-      {pathname !== '/' && (
-        <div data-cy='todo-title-edit-button' onClick={editTitle} onBlur={handleSync}>
-          <Icon.PencilIcon />
-        </div>
-      )}
+      {pathname !== '/' && <Icon.PencilIcon data-cy='todo-title-edit-button' onClick={editTitle} onBlur={handleSync} />}
     </div>
   )
 }

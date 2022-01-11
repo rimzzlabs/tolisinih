@@ -1,6 +1,3 @@
-import ButtonMain from '@/components/mollecules/headerMain/ButtonMain'
-import TitleMain from '@/components/mollecules/headerMain/TitleMain'
-
 import Header from '../components/Header'
 import HeaderMain from '../components/HeaderMain'
 
@@ -16,10 +13,7 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <div className='layout'>
-        <HeaderMain>
-          <TitleMain />
-          <ButtonMain />
-        </HeaderMain>
+        <HeaderMain />
         <main className='pb-10'>{children}</main>
       </div>
     </>

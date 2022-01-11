@@ -39,7 +39,7 @@ const ActivityList = () => {
       <Figures
         dataCy='activity-empty-state'
         onClick={addNewActivity}
-        src='https://ik.imagekit.io/mlnzyx/devcode-todo/new-activity_wJFQLMWOpxN.svg?updatedAt=1635360519343'
+        src='https://ik.imagekit.io/mlnzyx/devcode-todo/new-activity_OP7NGluCh3.webp?updatedAt=1641870436456'
       />
     </Suspense>
   )

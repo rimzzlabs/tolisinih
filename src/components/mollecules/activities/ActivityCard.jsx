@@ -34,6 +34,7 @@ const ActivityCard = ({ id, title, created_at }) => {
             e.stopPropagation()
             showModalAlert()
           }}
+          data-cy='activity-item-delete-button'
         />
       </div>
     </div>

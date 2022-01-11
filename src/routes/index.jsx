@@ -6,7 +6,7 @@ const Detail = lazy(() => import('@/pages/DetailPage'))
 
 const MyRoutes = () => {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/detail/:slug' element={<Detail />} />

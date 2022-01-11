@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
-const Indicator = ({ title }) => {
-  switch (title) {
+const Indicator = ({ type }) => {
+  switch (type) {
     case 'Very High':
     case 'very-high':
       return <span className='w-3 h-3 rounded-full mr-4 lg:mr-6 bg-red-500' />

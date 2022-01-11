@@ -1,7 +1,5 @@
 import Button from '@/components/atoms/Button'
-import ButtonPriority from '@/components/atoms/ButtonPriority'
 import FormHeader from '@/components/atoms/FormHeader'
-import Input from '@/components/atoms/Input'
 
 import { doGet, doPatch, doPost } from '@/libs/doFetch'
 import { setModalForm } from '@/redux/actions/modalFormAction'
@@ -9,6 +7,10 @@ import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
 import { Suspense, lazy, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
+const ButtonPriority = lazy(() => import('@/components/atoms/ButtonPriority'))
+
+const Input = lazy(() => import('@/components/atoms/Input'))
 
 const PriorityDD = lazy(() => import('../dropdowns/PriorityDD'))
 
@@ -55,29 +57,33 @@ const ModalForm = () => {
           <label data-cy='modal-add-name-title' htmlFor='item-name' className='uppercase text-neutral-800'>
             NAMA LIST ITEM
           </label>
-          <Input />
+          <Suspense fallback={null}>
+            <Input />
+          </Suspense>
         </section>
 
         <section>
           <div data-cy='modal-add-priority-title' className='tracking-wider uppercase text-neutral-900'>
             PRIORITY
           </div>
-          <ButtonPriority />
+          <Suspense fallback={null}>
+            <ButtonPriority />
+          </Suspense>
           <Suspense fallback={null}>
             <PriorityDD />
           </Suspense>
         </section>
       </div>
-      <section className='flex items-center justify-end p-2 md:p-4 w-full'>
-        <Button
-          onClick={handleSubmit}
-          data-cy='modal-add-save-button'
-          disabled={modalForm.title.length > 0 ? false : true}
-          className={`px-4 md:px-8 bg-sky-500 text-white ${modalForm.title.length > 0 ? 'opacity-100' : 'opacity-50'}`}
-        >
-          Simpan
-        </Button>
-      </section>
+      <Button
+        onClick={handleSubmit}
+        data-cy='modal-add-save-button'
+        disabled={modalForm.title.length > 0 ? false : true}
+        className={`w-1/3 md:w-1/4 mr-2 mb-2 md:mr-4 md:mb-4 ml-auto px-4 md:px-8 bg-sky-500 text-white ${
+          modalForm.title.length > 0 ? 'opacity-100' : 'opacity-50'
+        }`}
+      >
+        Simpan
+      </Button>
     </div>
   )
 }

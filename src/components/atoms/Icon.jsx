@@ -2,8 +2,9 @@ import * as sort from '@/redux/constant/action-types'
 
 import { memo } from 'react'
 
-export const PlusIcon = memo(() => (
+export const PlusIcon = memo(({ ...props }) => (
   <svg
+    {...props}
     className='h-6 w-6'
     viewBox='0 0 24 24'
     fill='none'
@@ -20,8 +21,9 @@ export const PlusIcon = memo(() => (
 
 PlusIcon.displayName = 'PlusIcon'
 
-export const PencilIcon = memo(() => (
+export const PencilIcon = memo(({ ...props }) => (
   <svg
+    {...props}
     stroke='currentColor'
     fill='currentColor'
     strokeWidth='0'
@@ -40,8 +42,9 @@ export const PencilIcon = memo(() => (
 
 PencilIcon.displayName = 'PencilIcon'
 
-export const TrashIcon = memo(() => (
+export const TrashIcon = memo(({ ...props }) => (
   <svg
+    {...props}
     stroke='currentColor'
     fill='currentColor'
     strokeWidth='0'
@@ -56,8 +59,9 @@ export const TrashIcon = memo(() => (
 
 TrashIcon.displayName = 'TrashIcon'
 
-export const CheckIcon = memo(() => (
+export const CheckIcon = memo(({ ...props }) => (
   <svg
+    {...props}
     xmlns='http://www.w3.org/2000/svg'
     className='absolute right-4 h-4 w-4 md:w-6 md:h-6'
     data-cy='sort-selection-selected'
@@ -71,11 +75,12 @@ export const CheckIcon = memo(() => (
 
 CheckIcon.displayName = 'CheckIcon'
 
-export const SortIcon = memo(({ type }) => {
+export const SortIcon = memo(({ type, ...props }) => {
   switch (type) {
     case sort.SET_NEWER:
       return (
         <svg
+          {...props}
           stroke='currentColor'
           fill='currentColor'
           strokeWidth='0'
@@ -92,6 +97,7 @@ export const SortIcon = memo(({ type }) => {
     case sort.SET_OLDER:
       return (
         <svg
+          {...props}
           stroke='currentColor'
           fill='currentColor'
           strokeWidth='0'
@@ -108,6 +114,7 @@ export const SortIcon = memo(({ type }) => {
     case sort.SET_AZ:
       return (
         <svg
+          {...props}
           stroke='currentColor'
           fill='currentColor'
           strokeWidth='0'
@@ -124,6 +131,7 @@ export const SortIcon = memo(({ type }) => {
     case sort.SET_ZA:
       return (
         <svg
+          {...props}
           stroke='currentColor'
           fill='currentColor'
           strokeWidth='0'
@@ -140,6 +148,7 @@ export const SortIcon = memo(({ type }) => {
     case sort.SET_INCOMPLETED:
       return (
         <svg
+          {...props}
           stroke='currentColor'
           fill='currentColor'
           strokeWidth='0'
@@ -155,12 +164,11 @@ export const SortIcon = memo(({ type }) => {
     default:
       return (
         <svg
+          {...props}
           stroke='currentColor'
           fill='currentColor'
           strokeWidth='0'
           viewBox='0 0 24 24'
-          height='1em'
-          width='1em'
           xmlns='http://www.w3.org/2000/svg'
         >
           <path d='M8 16L4 16 10 22 10 19 10 16 10 2 8 2zM14 5L14 8 14 22 16 22 16 8 20 8 14 2z'></path>

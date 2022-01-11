@@ -7,11 +7,11 @@ import { setActivity } from '@/redux/actions/activityAction'
 import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 
-import { Suspense, lazy, memo, useCallback } from 'react'
+import SortList from '../sorts/SortList'
+
+import { memo, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-
-const SortList = lazy(() => import('@/components/mollecules/sorts/SortList'))
 
 const ButtonMain = () => {
   const { pathname } = useLocation()
@@ -55,14 +55,14 @@ const ButtonMain = () => {
 
   return (
     <div className='flex items-center space-x-2 md:scroll-px-3'>
-      <Button data-cy='todo-sort-button' className='relative border aspect-square' onClick={showSortOpt}>
-        <Icon.SortIcon />
-        <span className='sr-only'>Sort Item</span>
-      </Button>
+      <Icon.SortIcon
+        data-cy='todo-sort-button'
+        className='w-8 md:w-10 p-2 md:p- aspect-square border rounded-full  cursor-pointer text-neutral-800'
+        onClick={showSortOpt}
+      />
 
-      <div className='relative'>
-        <Suspense fallback={null}>{sortOptions.isOpen && <SortList />}</Suspense>
-      </div>
+      <div className='relative'>{sortOptions.isOpen && <SortList />}</div>
+
       <Button data-cy='todo-add-button' onClick={showForm}>
         <Icon.PlusIcon />
         <span className='sr-only sm:not-sr-only'>Tambah</span>

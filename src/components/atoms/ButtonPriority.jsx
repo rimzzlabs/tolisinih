@@ -25,9 +25,9 @@ const ButtonPriority = () => {
       data-cy='modal-add-priority-dropdown'
       className='flex items-center justify-between mt-2 lg:mt-4 px-4 lg:px-6 w-40 lg:w-48 h-12 lg:h-14 rounded-md transition outline-none border border-neutral-400 hover:border-primary-500 focus:border-primary-500'
     >
-      <Indicator title={modalForm.priority} />
+      <Indicator type={modalForm.priority} />
 
-      <span className='text-xs md:text-sm xl:text-base font-semibold text-fontColor-900'>{priority}</span>
+      <span className='text-xs md:text-sm xl:text-base font-semibold'>{priority}</span>
 
       <svg
         stroke='currentColor'

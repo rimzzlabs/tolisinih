@@ -1,4 +1,5 @@
 import Layout from '@/layouts'
+import ModalLayout from '@/layouts/ModalLayout'
 import { setModalAlert } from '@/redux/actions/ModalAlertAction'
 import { setModalForm } from '@/redux/actions/ModalFormAction'
 import MyRoutes from '@/routes'
@@ -8,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const ModalAlert = lazy(() => import('@/components/mollecules/modals/ModalAlert'))
 const ModalInfo = lazy(() => import('@/components/mollecules/modals/ModalInfo'))
-const ModalLayout = lazy(() => import('@/layouts/ModalLayout'))
 const ModalForm = lazy(() => import('@/components/mollecules/modals/ModalForm'))
 
 export default function App() {
@@ -30,19 +30,21 @@ export default function App() {
         <MyRoutes />
       </Layout>
 
-      <Suspense fallback={null}>
-        {modalAlert.isOpen && (
-          <ModalLayout onClick={closeModal}>
+      {modalAlert.isOpen && (
+        <ModalLayout onClick={closeModal}>
+          <Suspense fallback={<div>Loading...</div>}>
             {!modalAlert.isDeleteComplete ? <ModalAlert /> : <ModalInfo type={modalAlert.type} />}
-          </ModalLayout>
-        )}
+          </Suspense>
+        </ModalLayout>
+      )}
 
-        {modalForm.isOpen && (
-          <ModalLayout onClick={closeModal}>
+      {modalForm.isOpen && (
+        <ModalLayout onClick={closeModal}>
+          <Suspense fallback={<div>Loading...</div>}>
             <ModalForm />
-          </ModalLayout>
-        )}
-      </Suspense>
+          </Suspense>
+        </ModalLayout>
+      )}
     </>
   )
 }

@@ -23,7 +23,7 @@ const DropDownItem = ({ title, id }) => {
       data-cy='modal-add-priority-item'
       className='flex items-center h-full w-full px-4 lg:px-6 cursor-pointer hover:bg-neutral-100'
     >
-      <Indicator title={title} />
+      <Indicator type={title} />
       <span>{title}</span>
     </button>
   )

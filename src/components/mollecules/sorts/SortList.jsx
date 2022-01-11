@@ -1,8 +1,8 @@
 import { sortList } from '@/libs/constant'
 
-import SortItem from './SortItem'
+import { Suspense, lazy, memo } from 'react'
 
-import { memo } from 'react'
+const SortItem = lazy(() => import('./SortItem'))
 
 const SortList = () => {
   return (
@@ -11,9 +11,11 @@ const SortList = () => {
         data-cy='sort-parent'
         className='w-full h-full flex flex-col items-stretch justify-between rounded-lg divide-y border bg-white'
       >
-        {sortList.map((item) => (
-          <SortItem key={item.title} {...item} />
-        ))}
+        <Suspense fallback={null}>
+          {sortList.map((item) => (
+            <SortItem key={item.title} {...item} />
+          ))}
+        </Suspense>
       </div>
     </div>
   )
