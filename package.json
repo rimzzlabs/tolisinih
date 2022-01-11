@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "yarn cleanup && vite build --base=https://cdn.statically.io/gh/rizkimcitra/tolisinih/main/dist",
+    "build": "yarn cleanup && vite build",
     "cleanup": "rm -rf ./dist",
     "serve": "vite preview"
   },

@@ -8,5 +8,6 @@ export default defineConfig({
     alias: {
       '@': '/src'
     }
-  }
+  },
+  base: 'https://cdn.statically.io/gh/rizkimcitra/tolisinih/main/dist'
 })
