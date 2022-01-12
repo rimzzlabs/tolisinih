@@ -9,5 +9,5 @@ export default defineConfig({
       '@': '/src'
     }
   },
-  base: 'https://cdn.statically.io/gh/rizkimcitra/tolisinih/main/dist'
+  base: process.env.NODE_ENV === 'production' ? 'https://cdn.statically.io/gh/rizkimcitra/tolisinih/main/dist' : '/'
 })

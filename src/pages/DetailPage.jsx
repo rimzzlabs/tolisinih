@@ -27,11 +27,9 @@ const DetailPage = () => {
   }, [])
 
   return (
-    <div className='w-full'>
-      <Suspense fallback={null}>
-        <TodoList />
-      </Suspense>
-    </div>
+    <Suspense fallback={null}>
+      <TodoList />
+    </Suspense>
   )
 }
 

@@ -3,7 +3,7 @@ import ActivityList from '@/components/mollecules/activities/ActivityList'
 import { doGet } from '@/libs/doFetch'
 import { setActivity } from '@/redux/actions/activityAction'
 
-import { memo, useEffect } from 'react'
+import { Suspense, memo, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 const IndexPage = () => {
@@ -19,9 +19,9 @@ const IndexPage = () => {
   }, [])
 
   return (
-    <div className='w-full'>
+    <Suspense fallback={<div>Loading...</div>}>
       <ActivityList />
-    </div>
+    </Suspense>
   )
 }
 

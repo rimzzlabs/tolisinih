@@ -16,13 +16,7 @@
   }
 
   body {
-    @apply text-sm md:text-base overflow-x-hidden antialiased bg-neutral-50 text-neutral-600;
-  }
-
-  button,
-  a,
-  input:not(input[type='text']) {
-    @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:transition-all;
+    @apply text-sm md:text-base overflow-x-hidden antialiased bg-neutral-100 text-neutral-600;
   }
 }
 
