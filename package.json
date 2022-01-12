@@ -15,8 +15,7 @@
     "react-dom": "16.14.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
-    "redux": "^4.1.2",
-    "source-map-explorer": "^2.5.2"
+    "redux": "^4.1.2"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.1.1",
