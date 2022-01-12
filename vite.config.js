@@ -10,8 +10,5 @@ export default defineConfig({
       '@': '/src'
     }
   },
-  base: process.env.NODE_ENV === 'production' ? 'https://cdn.statically.io/gh/rizkimcitra/tolisinih/main/dist/' : '/',
-  build: {
-    sourcemap: process.env.NODE_ENV === 'production' ? false : true
-  }
+  base: process.env.NODE_ENV === 'production' ? 'https://cdn.statically.io/gh/rizkimcitra/tolisinih/main/dist/' : '/'
 })
