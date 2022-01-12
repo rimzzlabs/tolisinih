@@ -1,4 +1,5 @@
-import * as Icon from '@/components/atoms/Icon'
+import Check from '@/components/atoms/icons/Check'
+import SortType from '@/components/atoms/icons/SortType'
 
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 
@@ -18,12 +19,12 @@ const SortItem = ({ title, type }) => {
       className='relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100'
     >
       <span className='text-sky-500'>
-        <Icon.SortIcon type={type} />
+        <SortType type={type} />
       </span>
 
       <span data-cy='sort-selection-title'>{title}</span>
 
-      {sortOptions.sortBy === type && <Icon.CheckIcon />}
+      {sortOptions.sortBy === type && <Check />}
     </button>
   )
 }

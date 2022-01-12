@@ -1,10 +1,5 @@
 import { memo } from 'react'
 
-/**
- * a trash icon
- * @param {{onClick: () => void; className?: string; "data-cy": string}} param0
- * @returns
- */
 const Trash = ({ ...props }) => (
   <svg
     {...props}

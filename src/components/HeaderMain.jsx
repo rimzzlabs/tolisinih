@@ -4,7 +4,7 @@ import TitleMain from './mollecules/headerMain/TitleMain'
 import { memo } from 'react'
 
 const HeaderMain = () => (
-  <div className='flex items-center justify-between my-10 md:my-14'>
+  <div className='flex items-center justify-between my-10'>
     <TitleMain />
     <ButtonMain />
   </div>

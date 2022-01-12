@@ -1,3 +1,5 @@
+import Figures from '@/components/Figures'
+
 import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 import { SET_AZ, SET_INCOMPLETED, SET_NEWER, SET_OLDER, SET_ZA } from '@/redux/constant/action-types'
@@ -6,8 +8,6 @@ import { Suspense, lazy, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const TodoCard = lazy(() => import('./TodoCard'))
-
-const Figures = lazy(() => import('@/components/Figures'))
 
 const TodoList = () => {
   const todos = useSelector((state) => state.selectedActivity.todo_items)
@@ -51,7 +51,7 @@ const TodoList = () => {
   if (todos.length > 0) {
     return (
       <div className='flex flex-col w-full space-y-2 md:space-y-3'>
-        <Suspense fallback={false}>
+        <Suspense fallback={<div>Loading...</div>}>
           {todos.map(
             /**
              *
@@ -78,13 +78,11 @@ const TodoList = () => {
   }
 
   return (
-    <Suspense fallback={null}>
-      <Figures
-        onClick={showForm}
-        dataCy='todo-empty-state'
-        src='https://ik.imagekit.io/mlnzyx/devcode-todo/new-todos_icWrDUS4D0.webp?updatedAt=1641870367004'
-      />
-    </Suspense>
+    <Figures
+      onClick={showForm}
+      data-cy='todo-empty-state'
+      src='https://ik.imagekit.io/mlnzyx/devcode-todo/new-todos_icWrDUS4D0.webp?updatedAt=1641870367004'
+    />
   )
 }
 

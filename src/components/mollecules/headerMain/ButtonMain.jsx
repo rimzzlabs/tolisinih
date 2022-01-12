@@ -1,5 +1,6 @@
 import Button from '@/components/atoms/Button'
-import * as Icon from '@/components/atoms/Icon'
+import Plus from '@/components/atoms/icons/Plus'
+import Sort from '@/components/atoms/icons/Sort'
 
 import { createActivity } from '@/libs/createActivity'
 import { doGet, doPost } from '@/libs/doFetch'
@@ -47,7 +48,7 @@ const ButtonMain = () => {
   if (pathname === '/') {
     return (
       <Button data-cy='activity-add-button' onClick={addNewActivity}>
-        <Icon.PlusIcon />
+        <Plus />
         <span className='sr-only sm:not-sr-only'>Tambah</span>
       </Button>
     )
@@ -55,7 +56,7 @@ const ButtonMain = () => {
 
   return (
     <div className='flex items-center space-x-2 md:scroll-px-3'>
-      <Icon.SortIcon
+      <Sort
         data-cy='todo-sort-button'
         className='w-8 md:w-10 p-2 md:p- aspect-square border rounded-full  cursor-pointer text-neutral-800'
         onClick={showSortOpt}
@@ -64,7 +65,7 @@ const ButtonMain = () => {
       <div className='relative'>{sortOptions.isOpen && <SortList />}</div>
 
       <Button data-cy='todo-add-button' onClick={showForm}>
-        <Icon.PlusIcon />
+        <Plus />
         <span className='sr-only sm:not-sr-only'>Tambah</span>
       </Button>
     </div>

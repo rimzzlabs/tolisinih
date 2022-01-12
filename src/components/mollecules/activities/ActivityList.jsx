@@ -37,7 +37,7 @@ const ActivityList = () => {
   return (
     <Suspense fallback={null}>
       <Figures
-        dataCy='activity-empty-state'
+        data-cy='activity-empty-state'
         onClick={addNewActivity}
         src='https://ik.imagekit.io/mlnzyx/devcode-todo/new-activity_OP7NGluCh3.webp?updatedAt=1641870436456'
       />

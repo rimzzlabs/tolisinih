@@ -1,4 +1,4 @@
-import Trash from '@/components/atoms/Trash'
+import Trash from '@/components/atoms/icons/Trash'
 
 import { setModalAlert } from '@/redux/actions/modalAlertAction'
 

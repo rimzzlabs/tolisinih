@@ -4,10 +4,14 @@ import { defineConfig } from 'vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+
   resolve: {
     alias: {
       '@': '/src'
     }
   },
-  base: process.env.NODE_ENV === 'production' ? 'https://cdn.statically.io/gh/rizkimcitra/tolisinih/main/dist/' : '/'
+  base: process.env.NODE_ENV === 'production' ? 'https://cdn.statically.io/gh/rizkimcitra/tolisinih/main/dist/' : '/',
+  build: {
+    sourcemap: process.env.NODE_ENV === 'production' ? false : true
+  }
 })

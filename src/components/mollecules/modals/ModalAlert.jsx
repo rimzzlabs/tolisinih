@@ -6,6 +6,7 @@ import { setModalAlert } from '@/redux/actions/modalAlertAction'
 import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 
 import { memo } from 'react'
+import { batch } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 
 const ModalAlert = () => {
@@ -17,8 +18,10 @@ const ModalAlert = () => {
 
   const syncActivity = async () => {
     const response = await doGet('/activity-groups?email=rizki.maulana@skyshi.com')
-    dispatch(setModalAlert({ id: null }))
-    dispatch(setActivity(response.data))
+    batch(() => {
+      dispatch(setModalAlert({ id: null }))
+      dispatch(setActivity(response.data))
+    })
   }
 
   const syncSelectedActivity = async () => {

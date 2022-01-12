@@ -1,5 +1,5 @@
 import Indicator from '@/components/atoms/Indicator'
-import Trash from '@/components/atoms/Trash'
+import Trash from '@/components/atoms/icons/Trash'
 
 import { doGet, doPatch } from '@/libs/doFetch'
 import { setModalAlert } from '@/redux/actions/modalAlertAction'

@@ -1,12 +1,12 @@
 import BackButton from '@/components/atoms/BackButton'
-import * as Icon from '@/components/atoms/Icon'
+import Pen from '@/components/atoms/icons/Pen'
 
 import { doPatch } from '@/libs/doFetch'
 import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 import { setTitle } from '@/redux/actions/setTitleAction'
 
 import { memo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { batch, useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
 const TitleMain = () => {
@@ -20,8 +20,10 @@ const TitleMain = () => {
 
   const handlePatch = async () => {
     await doPatch('/activity-groups/' + selectedActivity.id, { title: titleActivity.title })
-    dispatch(setSelectedActivity({ title: titleActivity.title }))
-    dispatch(setTitle({ title: null, isEditing: false }))
+    batch(() => {
+      dispatch(setSelectedActivity({ title: titleActivity.title }))
+      dispatch(setTitle({ title: null, isEditing: false }))
+    })
   }
 
   const handleSync = async () => {
@@ -59,7 +61,7 @@ const TitleMain = () => {
           autoFocus
         />
       )}
-      {pathname !== '/' && <Icon.PencilIcon data-cy='todo-title-edit-button' onClick={editTitle} onBlur={handleSync} />}
+      {pathname !== '/' && <Pen data-cy='todo-title-edit-button' onClick={editTitle} onBlur={handleSync} />}
     </div>
   )
 }

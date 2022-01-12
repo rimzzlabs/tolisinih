@@ -1,13 +1,13 @@
+import TodoList from '@/components/mollecules/todos/TodoList'
+
 import { doGet } from '@/libs/doFetch'
 import { setSelectedActivity } from '@/redux/actions/selectedActivityAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 import { SET_NEWER } from '@/redux/constant/action-types'
 
-import { Suspense, lazy, memo, useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-
-const TodoList = lazy(() => import('@/components/mollecules/todos/TodoList'))
 
 const DetailPage = () => {
   const dispatch = useDispatch()
@@ -26,11 +26,7 @@ const DetailPage = () => {
     }
   }, [])
 
-  return (
-    <Suspense fallback={null}>
-      <TodoList />
-    </Suspense>
-  )
+  return <TodoList />
 }
 
 export default memo(DetailPage)

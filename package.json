@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "analyze": "npx source-map-explorer dist/assets/vendor.5d0fb879.js.map",
     "build": "yarn cleanup && vite build",
     "cleanup": "rm -rf ./dist",
     "serve": "vite preview"
