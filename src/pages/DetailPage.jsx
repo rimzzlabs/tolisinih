@@ -13,13 +13,13 @@ const DetailPage = () => {
   const dispatch = useDispatch()
   const { slug } = useParams()
 
-  const syncActivity = async () => {
+  const syncSelectedActivity = async () => {
     const response = await doGet(`/activity-groups/${slug}`)
     dispatch(setSelectedActivity(response))
   }
 
   useEffect(() => {
-    syncActivity()
+    syncSelectedActivity()
 
     return () => {
       dispatch(setSortOption({ sortBy: SET_NEWER, isOpen: false }))

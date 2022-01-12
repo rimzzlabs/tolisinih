@@ -16,7 +16,7 @@
   }
 
   body {
-    @apply text-sm md:text-base overflow-x-hidden antialiased bg-neutral-100 text-neutral-600;
+    @apply overflow-x-hidden antialiased bg-neutral-100 text-neutral-600;
   }
 }
 

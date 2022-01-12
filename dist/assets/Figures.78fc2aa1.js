@@ -1,1 +1,0 @@
-import{r as t,j as a}from"./vendor.b30708ff.js";const o=({src:e,onClick:r=()=>null,dataCy:s=""})=>a("figure",{onClick:r,className:"w-1/2 mx-auto cursor-pointer",children:a("img",{"data-cy":s,src:e,className:"w-full object-contain aspect-square",alt:"activity"})});var i=t.exports.memo(o);export{i as default};

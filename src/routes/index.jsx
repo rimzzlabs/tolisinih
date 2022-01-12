@@ -10,7 +10,7 @@ const MyRoutes = () => {
       <Route
         path='/'
         element={
-          <Suspense fallback={<div className='text-center'>Loading...</div>}>
+          <Suspense fallback={<div>Loading...</div>}>
             <Home />
           </Suspense>
         }
@@ -19,7 +19,7 @@ const MyRoutes = () => {
       <Route
         path='/detail/:slug'
         element={
-          <Suspense fallback={<div className='text-center'>Loading...</div>}>
+          <Suspense fallback={<div>Loading...</div>}>
             <Detail />
           </Suspense>
         }
