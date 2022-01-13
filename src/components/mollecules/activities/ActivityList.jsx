@@ -1,13 +1,13 @@
+import Figures from '@/components/Figures'
+
 import { createActivity } from '@/libs/createActivity'
 import { doGet, doPost } from '@/libs/doFetch'
 import { setActivity } from '@/redux/actions/activityAction'
 
 import ActivityCard from './ActivityCard'
 
-import { Suspense, lazy, memo } from 'react'
+import { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-const Figures = lazy(() => import('@/components/Figures'))
 
 const ActivityList = () => {
   const activity = useSelector((state) => state.activity.activity)
@@ -35,13 +35,11 @@ const ActivityList = () => {
   }
 
   return (
-    <Suspense fallback={null}>
-      <Figures
-        data-cy='activity-empty-state'
-        onClick={addNewActivity}
-        src='https://ik.imagekit.io/mlnzyx/devcode-todo/new-activity_OP7NGluCh3.webp?updatedAt=1641870436456'
-      />
-    </Suspense>
+    <Figures
+      data-cy='activity-empty-state'
+      onClick={addNewActivity}
+      src='https://ik.imagekit.io/mlnzyx/devcode-todo/new-activity_OP7NGluCh3.webp?updatedAt=1641870436456'
+    />
   )
 }
 

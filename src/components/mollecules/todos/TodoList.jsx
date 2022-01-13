@@ -4,10 +4,10 @@ import { setModalForm } from '@/redux/actions/modalFormAction'
 import { setSortOption } from '@/redux/actions/sortOptionsAction'
 import { SET_AZ, SET_INCOMPLETED, SET_NEWER, SET_OLDER, SET_ZA } from '@/redux/constant/action-types'
 
-import { Suspense, lazy, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import TodoCard from './TodoCard'
 
-const TodoCard = lazy(() => import('./TodoCard'))
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const TodoList = () => {
   const todos = useSelector((state) => state.selectedActivity.todo_items)
@@ -51,28 +51,26 @@ const TodoList = () => {
   if (todos.length > 0) {
     return (
       <div className='flex flex-col w-full space-y-2 md:space-y-3'>
-        <Suspense fallback={<div>Loading...</div>}>
-          {todos.map(
-            /**
-             *
-             * @param {{
-             * id: number
-             * title: string
-             * priority: string
-             * is_active: number | boolean}} item the parameter is the object of the todo item received from the API
-             * @returns
-             */
-            (item) => (
-              <TodoCard
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                priority={item.priority}
-                is_active={item.is_active}
-              />
-            )
-          )}
-        </Suspense>
+        {todos.map(
+          /**
+           *
+           * @param {{
+           * id: number
+           * title: string
+           * priority: string
+           * is_active: number | boolean}} item the parameter is the object of the todo item received from the API
+           * @returns
+           */
+          (item) => (
+            <TodoCard
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              priority={item.priority}
+              is_active={item.is_active}
+            />
+          )
+        )}
       </div>
     )
   }
